@@ -9,10 +9,11 @@ import java.util.UUID;
 @AllArgsConstructor
 public class PurchaseDTO {
     String uid;
-    String bookTitle;
+    String bookUid;
     String customerCpf;
 
     public PurchaseDTO() {
         this.uid = UUID.randomUUID().toString();
     }
 }
+

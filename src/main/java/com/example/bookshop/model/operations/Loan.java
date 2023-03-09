@@ -14,6 +14,6 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.AUTO)
     String id;
     String uid;
-    String bookTitle;
+    String bookUid;
     String customerCpf;
 }

@@ -1,5 +1,6 @@
 package com.example.bookshop.model.operations;
 
+import com.example.bookshop.model.product.Book;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -14,6 +15,6 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.AUTO)
     String id;
     String uid;
-    String bookTitle;
+    String bookUid;
     String customerCpf;
 }
