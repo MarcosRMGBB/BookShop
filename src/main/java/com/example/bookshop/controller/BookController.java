@@ -13,10 +13,11 @@ public class BookController {
     private static List<BookDTO> bookList = Collections.synchronizedList(
             new ArrayList() {{
                 add(new BookDTO(UUID.randomUUID().toString(), "Dom Casmuro", "Machado de Assis",
-                        "Literature"));
+                        "Literature", 25.0));
                 add(new BookDTO(UUID.randomUUID().toString(), "Assim Falou Zaratustra", "Friedrich Nietzsche",
-                        "Philosophy"));
-                add(new BookDTO(UUID.randomUUID().toString(), "Tao Te Ching", "Lao Tse", "Philosophy"));
+                        "Philosophy", 50.0));
+                add(new BookDTO(UUID.randomUUID().toString(), "Tao Te Ching", "Lao Tse", "Philosophy",
+                        100.0));
             }}
     );
 

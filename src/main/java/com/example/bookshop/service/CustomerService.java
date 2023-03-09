@@ -1,6 +1,6 @@
 package com.example.bookshop.service;
 
-import com.example.bookshop.model.Customer;
+import com.example.bookshop.model.people.Customer;
 import com.example.bookshop.repository.CustomerRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

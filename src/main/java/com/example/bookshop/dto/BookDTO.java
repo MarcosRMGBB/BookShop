@@ -12,6 +12,7 @@ public class BookDTO {
     private String title;
     private String author;
     private String category;
+    private double price;
 
     public BookDTO() {
         this.uid = UUID.randomUUID().toString();

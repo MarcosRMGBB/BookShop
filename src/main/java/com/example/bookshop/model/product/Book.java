@@ -1,4 +1,4 @@
-package com.example.bookshop.model;
+package com.example.bookshop.model.product;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -17,4 +17,5 @@ public class Book {
     private String title;
     private String author;
     private String category;
+    private double price;
 }

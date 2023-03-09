@@ -1,4 +1,4 @@
-package com.example.bookshop.model;
+package com.example.bookshop.model.people;
 
 import lombok.Getter;
 import lombok.Setter;
