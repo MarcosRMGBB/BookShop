@@ -1,6 +1,8 @@
 package com.example.bookshop.model.operations;
 
+import com.example.bookshop.dto.LoanDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -10,15 +12,18 @@ import java.util.UUID;
 @Table(name = "loan")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    long id;
-    String uid;
-    String bookUid;
-    String customerCpf;
+    private long id;
+    private String uid;
+    private String bookUid;
+    private String customerCpf;
 
-    public Loan() {
+    public Loan(LoanDTO loanDTO) {
         this.uid = UUID.randomUUID().toString();
+        this.bookUid = loanDTO.getBookUid();
+        this.customerCpf = loanDTO.getCustomerCpf();
     }
 }

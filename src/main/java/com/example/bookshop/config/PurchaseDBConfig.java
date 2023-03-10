@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.util.UUID;
 
 @Configuration
 @AllArgsConstructor
@@ -17,17 +18,20 @@ public class PurchaseDBConfig {
     @PostConstruct
     private void purchaseDB() {
         Book book = new Book();
+        book.setUid(UUID.randomUUID().toString());
         book.setTitle("Dom Casmurro");
         book.setAuthor("Machado de Assis");
         book.setCategory(Category.LITERATURE);
         book.setPrice(45.0);
 
         Customer customer = new Customer();
+        customer.setUid(UUID.randomUUID().toString());
         customer.setAge(25);
         customer.setName("Leitor");
         customer.setCpf("001.002.003-04");
 
         Purchase purchase = new Purchase();
+        purchase.setUid(UUID.randomUUID().toString());
         purchase.setBookUid(book.getUid());
         purchase.setCustomerCpf(customer.getCpf());
         purchaseRepository.saveAndFlush(purchase);

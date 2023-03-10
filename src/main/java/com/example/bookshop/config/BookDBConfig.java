@@ -17,6 +17,7 @@ public class BookDBConfig {
     @PostConstruct
     public void bookDB() {
         Book book1 = new Book();
+        book1.setUid(UUID.randomUUID().toString());
         book1.setTitle("Dom Casmurro");
         book1.setAuthor("Machado de Assis");
         book1.setCategory(Category.LITERATURE);

@@ -1,6 +1,8 @@
 package com.example.bookshop.model.people;
 
+import com.example.bookshop.dto.CustomerDTO;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
 import java.util.UUID;
@@ -9,6 +11,7 @@ import java.util.UUID;
 @Getter
 @Setter
 @Table(name="customer")
+@NoArgsConstructor
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,7 +21,10 @@ public class Customer {
     private int age;
     private String cpf;
 
-    public Customer() {
+    public Customer(CustomerDTO customerDTO) {
         this.uid = UUID.randomUUID().toString();
+        this.name = customerDTO.getName();
+        this.age = customerDTO.getAge();
+        this.cpf = customerDTO.getCpf();
     }
 }

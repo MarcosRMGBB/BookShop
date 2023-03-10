@@ -7,9 +7,9 @@ import java.util.UUID;
 @Data
 @AllArgsConstructor
 public class LoanDTO {
-    String uid;
-    String bookUid;
-    String customerCpf;
+    private String uid;
+    private String bookUid;
+    private String customerCpf;
 
     public LoanDTO() {
         this.uid = UUID.randomUUID().toString();
