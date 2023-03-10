@@ -25,7 +25,10 @@ public class BookController {
     public synchronized ResponseEntity<Collection<BookDTO>> list(
             @RequestParam(defaultValue = "0") int page
     ) {
-        List<BookDTO> list = page == 0 ? bookList : bookList.stream().skip(page).limit(1).collect(Collectors.toList());
+        List<BookDTO> list = page == 0 ? bookList : bookList.stream()
+                                                            .skip(page)
+                                                            .limit(1)
+                                                            .collect(Collectors.toList());
         return ResponseEntity
                 .ok()
                 .header("List-Size", Integer.toString(bookList.size()))

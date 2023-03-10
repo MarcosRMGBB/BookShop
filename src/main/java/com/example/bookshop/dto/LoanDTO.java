@@ -8,7 +8,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class LoanDTO {
     String uid;
-    String bookTitle;
+    String bookUid;
     String customerCpf;
 
     public LoanDTO() {

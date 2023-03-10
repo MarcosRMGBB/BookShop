@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 @Entity
 @Getter
@@ -16,6 +17,11 @@ public class Book {
     private String uid;
     private String title;
     private String author;
-    private String category;
+    @Enumerated(EnumType.STRING)
+    private Category category;
     private double price;
+
+    public Book() {
+        this.uid = UUID.randomUUID().toString();
+    }
 }
