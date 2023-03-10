@@ -10,13 +10,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/loan")
 public class LoanController {
     @Autowired
     private LoanRepository loanRepository;
     @PostMapping("/new")
-    public ResponseEntity create(@RequestBody LoanDTO loanDTO) {
+    public ResponseEntity create(@RequestBody @Valid LoanDTO loanDTO) {
         Loan loan = new Loan(loanDTO);
         loanRepository.save(loan);
         return ResponseEntity

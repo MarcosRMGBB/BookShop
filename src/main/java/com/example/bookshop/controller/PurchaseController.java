@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/purchase")
 public class PurchaseController {
@@ -17,7 +19,7 @@ public class PurchaseController {
     @Autowired
     private PurchaseRepository purchaseRepository;
     @PostMapping("/new")
-    public ResponseEntity create(@RequestBody PurchaseDTO purchaseDTO) {
+    public ResponseEntity create(@RequestBody @Valid PurchaseDTO purchaseDTO) {
         Purchase purchase =  new Purchase(purchaseDTO);
         purchaseRepository.save(purchase);
         return ResponseEntity

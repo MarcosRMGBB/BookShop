@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -18,7 +19,7 @@ public class CustomerController {
     private CustomerRepository customerRepository;
 
     @PostMapping("/new")
-    public ResponseEntity create(@RequestBody CustomerDTO customerDTO) {
+    public ResponseEntity create(@RequestBody @Valid CustomerDTO customerDTO) {
         Customer customer = new Customer(customerDTO);
         customerRepository.save(customer);
         return ResponseEntity

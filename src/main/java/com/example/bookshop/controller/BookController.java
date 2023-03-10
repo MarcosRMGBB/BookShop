@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping("/book")
 public class BookController {
@@ -17,7 +19,7 @@ public class BookController {
     private BookRepository bookRepository;
 
     @PostMapping("/new")
-    public ResponseEntity create(@RequestBody BookDTO bookDTO) {
+    public ResponseEntity create(@RequestBody @Valid BookDTO bookDTO) {
         Book book = new Book(bookDTO);
         bookRepository.save(book);
         return ResponseEntity
