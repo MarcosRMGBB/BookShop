@@ -2,30 +2,25 @@ package com.example.bookshop.dto;
 
 import com.example.bookshop.model.product.Book;
 import com.example.bookshop.model.product.Category;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import lombok.Getter;
 
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.UUID;
-
-@AllArgsConstructor
-@Data
-public class BookDTO {
+@JsonSerialize
+@Getter
+public class BookListDTO {
     private String uid;
-    @NotBlank
     private String title;
-    @NotBlank
     private String author;
-    @NotNull
     @Enumerated(EnumType.STRING)
     private Category category;
-    @NotNull
     private double price;
-
-    public BookDTO() {
-        this.uid = UUID.randomUUID().toString();
+    public BookListDTO(Book book) {
+        this.uid = book.getUid();
+        this.title = book.getTitle();
+        this.author = book.getAuthor();
+        this.category = book.getCategory();
+        this.price = book.getPrice();
     }
 }

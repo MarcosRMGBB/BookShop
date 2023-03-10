@@ -1,16 +1,20 @@
 package com.example.bookshop.controller;
 
 import com.example.bookshop.dto.LoanDTO;
+import com.example.bookshop.dto.LoanListDTO;
 import com.example.bookshop.model.operations.Loan;
 import com.example.bookshop.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping("/loan")
@@ -24,5 +28,16 @@ public class LoanController {
         return ResponseEntity
                 .ok()
                 .body(loanDTO);
+    }
+
+    @GetMapping("/list")
+    public ResponseEntity<List<LoanListDTO>> list() {
+        List<LoanListDTO> loanListDTO = loanRepository.findAllHQL().stream()
+                .map(LoanListDTO::new)
+                .collect(Collectors.toList());
+
+        return ResponseEntity
+                .ok()
+                .body(loanListDTO);
     }
 }
