@@ -1,4 +1,4 @@
-package com.example.bookshop.dto;
+package com.example.bookshop.dto.product;
 
 import com.example.bookshop.model.product.Book;
 import com.example.bookshop.model.product.Category;
@@ -24,8 +24,18 @@ public class BookDTO {
     private Category category;
     @NotNull
     private double price;
+    private boolean status;
 
     public BookDTO() {
         this.uid = UUID.randomUUID().toString();
+    }
+
+    public BookDTO(Book book) {
+        this.uid = book.getUid();
+        this.author = book.getAuthor();
+        this.category = book.getCategory();
+        this.title = book.getTitle();
+        this.price = book.getPrice();
+        this.status = book.isStatus();
     }
 }

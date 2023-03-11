@@ -1,22 +1,19 @@
 package com.example.bookshop.controller;
 
-import com.example.bookshop.dto.LoanDTO;
-import com.example.bookshop.dto.LoanListDTO;
-import com.example.bookshop.model.operations.Loan;
+import com.example.bookshop.dto.operation.LoanDTO;
+import com.example.bookshop.dto.operation.LoanListDTO;
+import com.example.bookshop.model.operation.Loan;
 import com.example.bookshop.repository.LoanRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
-@Controller
+@RestController
 @RequestMapping("/loan")
 public class LoanController {
     @Autowired
@@ -31,13 +28,7 @@ public class LoanController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<LoanListDTO>> list() {
-        List<LoanListDTO> loanListDTO = loanRepository.findAllHQL().stream()
-                .map(LoanListDTO::new)
-                .collect(Collectors.toList());
-
-        return ResponseEntity
-                .ok()
-                .body(loanListDTO);
+    public Page<LoanListDTO> list(@PageableDefault(size = 5) Pageable page) {
+        return loanRepository.findAll(page).map(LoanListDTO::new);
     }
 }

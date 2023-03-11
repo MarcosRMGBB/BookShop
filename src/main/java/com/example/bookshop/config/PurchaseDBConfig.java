@@ -1,6 +1,6 @@
 package com.example.bookshop.config;
 
-import com.example.bookshop.model.operations.Purchase;
+import com.example.bookshop.model.operation.Purchase;
 import com.example.bookshop.model.people.Customer;
 import com.example.bookshop.model.product.Book;
 import com.example.bookshop.model.product.Category;
@@ -9,6 +9,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Configuration
@@ -34,6 +35,7 @@ public class PurchaseDBConfig {
         purchase.setUid(UUID.randomUUID().toString());
         purchase.setBookUid(book.getUid());
         purchase.setCustomerCpf(customer.getCpf());
+        purchase.setDate(LocalDate.now());
         purchaseRepository.saveAndFlush(purchase);
     }
 }

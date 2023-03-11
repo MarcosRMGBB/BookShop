@@ -1,23 +1,20 @@
 package com.example.bookshop.controller;
 
-import com.example.bookshop.dto.CustomerDTO;
-import com.example.bookshop.dto.CustomerListDTO;
+import com.example.bookshop.dto.people.CustomerDTO;
+import com.example.bookshop.dto.people.CustomerListDTO;
 import com.example.bookshop.model.people.Customer;
 import com.example.bookshop.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @RequestMapping("/customer")
-@Controller
+@RestController
 public class CustomerController {
     @Autowired
     private CustomerRepository customerRepository;
@@ -32,12 +29,7 @@ public class CustomerController {
     }
 
     @GetMapping("/list")
-    public ResponseEntity<List<CustomerListDTO>> list() {
-        List<CustomerListDTO> customerListDTO = customerRepository.findAllHQL().stream()
-                .map(CustomerListDTO::new)
-                .collect(Collectors.toList());
-        return ResponseEntity
-                .ok()
-                .body(customerListDTO);
+    public Page<CustomerListDTO> list(@PageableDefault(size = 5, sort = {"name"}) Pageable page) {
+        return customerRepository.findAll(page).map(CustomerListDTO::new);
     }
 }

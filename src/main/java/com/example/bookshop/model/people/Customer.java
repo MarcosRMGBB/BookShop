@@ -1,11 +1,10 @@
 package com.example.bookshop.model.people;
 
-import com.example.bookshop.dto.CustomerDTO;
+import com.example.bookshop.dto.people.CustomerDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import javax.persistence.*;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -22,7 +21,7 @@ public class Customer {
     private String cpf;
 
     public Customer(CustomerDTO customerDTO) {
-        this.uid = UUID.randomUUID().toString();
+        this.uid = customerDTO.getUid();
         this.name = customerDTO.getName();
         this.age = customerDTO.getAge();
         this.cpf = customerDTO.getCpf();

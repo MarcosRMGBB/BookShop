@@ -1,4 +1,4 @@
-package com.example.bookshop.dto;
+package com.example.bookshop.dto.product;
 
 import com.example.bookshop.model.product.Book;
 import com.example.bookshop.model.product.Category;

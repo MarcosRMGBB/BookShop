@@ -1,24 +1,21 @@
 package com.example.bookshop.config;
 
-import com.example.bookshop.model.operations.Loan;
+import com.example.bookshop.model.operation.Loan;
 import com.example.bookshop.model.people.Customer;
 import com.example.bookshop.model.product.Book;
 import com.example.bookshop.model.product.Category;
-import com.example.bookshop.repository.BookRepository;
-import com.example.bookshop.repository.CustomerRepository;
 import com.example.bookshop.repository.LoanRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
 import javax.annotation.PostConstruct;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Configuration
 @AllArgsConstructor
 public class LoanDBConfig {
     private LoanRepository loanRepository;
-    private CustomerRepository customerRepository;
-    private BookRepository bookRepository;
     @PostConstruct
     public void loanDB() {
         Book book = new Book();
@@ -38,6 +35,8 @@ public class LoanDBConfig {
         loan.setUid(UUID.randomUUID().toString());
         loan.setBookUid(book.getUid());
         loan.setCustomerCpf(customer.getCpf());
+        loan.setStartDate(LocalDate.now());
+        loan.setEndDate(LocalDate.now().plusDays(7));
         loanRepository.saveAndFlush(loan);
     }
 }

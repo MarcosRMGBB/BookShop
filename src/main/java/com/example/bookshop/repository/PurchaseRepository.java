@@ -1,6 +1,6 @@
 package com.example.bookshop.repository;
 
-import com.example.bookshop.model.operations.Purchase;
+import com.example.bookshop.model.operation.Purchase;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
