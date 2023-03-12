@@ -46,8 +46,12 @@ public class BookController {
     }
     @Transactional
     @DeleteMapping("/delete/{id}")
-    public void delete(@PathVariable Long id) {
+    public ResponseEntity delete(@PathVariable Long id) {
         Book book = bookRepository.getReferenceById(id);
         book.setStatus(false);
+        BookDTO bookDTO = new BookDTO(book);
+        return ResponseEntity
+                .ok()
+                .body(bookDTO);
     }
 }

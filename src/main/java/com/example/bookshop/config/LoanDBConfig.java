@@ -37,6 +37,7 @@ public class LoanDBConfig {
         loan.setCustomerCpf(customer.getCpf());
         loan.setStartDate(LocalDate.now());
         loan.setEndDate(LocalDate.now().plusDays(7));
+        loan.setStatus(true);
         loanRepository.saveAndFlush(loan);
     }
 }

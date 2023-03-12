@@ -1,13 +1,13 @@
 package com.example.bookshop.model.operation;
 
 import com.example.bookshop.dto.operation.LoanDTO;
+import com.example.bookshop.dto.operation.LoanUpdateDTO;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.UUID;
 
 @Entity
 @Table(name = "loan")
@@ -23,6 +23,7 @@ public class Loan {
     private String customerCpf;
     private LocalDate startDate;
     private LocalDate endDate;
+    private boolean status;
 
     public Loan(LoanDTO loanDTO) {
         this.uid = loanDTO.getUid();
@@ -30,5 +31,15 @@ public class Loan {
         this.customerCpf = loanDTO.getCustomerCpf();
         this.startDate = loanDTO.getStartDate();
         this.endDate = loanDTO.getEndDate();
+        this.status = true;
+    }
+
+    public void updateData(LoanUpdateDTO loanUpdateDTO) {
+        if(loanUpdateDTO.getBookUid() != null) {
+            this.bookUid = loanUpdateDTO.getBookUid();
+        }
+        if(loanUpdateDTO.getCustomerCpf() != null) {
+            this.customerCpf = loanUpdateDTO.getCustomerCpf();
+        }
     }
 }

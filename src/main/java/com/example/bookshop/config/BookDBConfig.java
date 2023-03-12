@@ -22,6 +22,7 @@ public class BookDBConfig {
         book1.setAuthor("Machado de Assis");
         book1.setCategory(Category.LITERATURE);
         book1.setPrice(45.0);
+        book1.setStatus(true);
         bookRepository.saveAndFlush(book1);
     }
 }

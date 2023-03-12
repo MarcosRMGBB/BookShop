@@ -20,6 +20,7 @@ public class CustomerDBConfig {
         customer1.setAge(25);
         customer1.setName("Leitor");
         customer1.setCpf("001.002.003-04");
+        customer1.setStatus(true);
         customerRepository.saveAndFlush(customer1);
     }
 }

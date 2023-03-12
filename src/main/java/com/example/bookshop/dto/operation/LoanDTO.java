@@ -1,10 +1,10 @@
 package com.example.bookshop.dto.operation;
 
+import com.example.bookshop.model.operation.Loan;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.UUID;
 @Data
@@ -22,5 +22,12 @@ public class LoanDTO {
         this.uid = UUID.randomUUID().toString();
         this.startDate = LocalDate.now();
         this.endDate = LocalDate.now().plusDays(7);
+    }
+    public LoanDTO(Loan loan) {
+        this.uid = loan.getUid();
+        this.bookUid = loan.getBookUid();
+        this.customerCpf = loan.getCustomerCpf();
+        this.startDate = loan.getStartDate();
+        this.endDate = loan.getEndDate();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.bookshop.dto.people;
 
+import com.example.bookshop.model.people.Customer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
@@ -19,5 +20,12 @@ public class CustomerDTO {
 
     public CustomerDTO() {
         this.uid = UUID.randomUUID().toString();
+    }
+
+    public CustomerDTO(Customer customer) {
+        this.uid = customer.getUid();
+        this.age = customer.getAge();
+        this.name = customer.getName();
+        this.cpf = customer.getCpf();
     }
 }

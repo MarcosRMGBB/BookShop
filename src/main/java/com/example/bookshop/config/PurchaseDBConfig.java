@@ -36,6 +36,7 @@ public class PurchaseDBConfig {
         purchase.setBookUid(book.getUid());
         purchase.setCustomerCpf(customer.getCpf());
         purchase.setDate(LocalDate.now());
+        purchase.setStatus(true);
         purchaseRepository.saveAndFlush(purchase);
     }
 }
